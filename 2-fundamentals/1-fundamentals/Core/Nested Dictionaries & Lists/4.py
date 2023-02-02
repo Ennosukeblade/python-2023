@@ -6,8 +6,8 @@ dojo = {
 }
 
 
-def printInfo(dict):
-    for key, val in dict.items():
+def printInfo(dictio):
+    for key, val in dictio.items():
         # used .upper() to change the key string to uppercase
         print(len(val), key.upper())
         for x in val:
