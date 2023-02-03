@@ -9,8 +9,8 @@ class BankAccount:
 
     @classmethod
     def display_all_accounts(cls):
-        for account in cls.all_accounts:
-            account.display_account_info()
+        for a in cls.all_accounts:
+            print(f"Balance: {a.balance}, Interest rate: {a.int_rate}")
         
 
     def deposit(self, amount):
