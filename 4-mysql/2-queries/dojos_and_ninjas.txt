@@ -1,0 +1,34 @@
+INSERT INTO dojos (name) VALUES ('Coding Dojo');
+INSERT INTO dojos (name) VALUES ('Napping Dojo');
+INSERT INTO dojos (name) VALUES ('Cats Dojo')
+
+SET SQL_SAFE_UPDATES = 0
+DELETE FROM dojos WHERE id = 1
+DELETE FROM dojos WHERE name = 'Napping Dojo'
+DELETE FROM dojos WHERE id = 3
+
+INSERT INTO dojos (name) VALUES ('Rumble Dojo')
+INSERT INTO dojos (name) VALUES ('Master Kickers Karate')
+INSERT INTO dojos (name) VALUES ('Persistence Dojo')
+
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Naruto', 'Uzumaki', 22, 4);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Sasuke', 'Sarutobi', 23, 4);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Madara', 'Uchiha', 30, 4);
+
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Hashirama', 'Senju', 21, 5);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Minato', 'Namikaze', 25, 5);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Sakura', 'Haruno', 18, 5);
+
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Hinata', 'Hayuga', 19, 6);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Ino', 'Yamanaka', 22, 6);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Kushina', 'Uzumaki', 37, 6);
+
+SELECT * FROM dojos
+LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id
+WHERE dojos.id = (SELECT id FROM dojos ORDER BY id ASC LIMIT 1);
+
+SELECT * FROM dojos
+LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id
+WHERE dojos.id = (SELECT id FROM dojos ORDER BY id DESC LIMIT 1);
+
+SELECT * FROM dojos ORDER BY id DESC LIMIT 1;
