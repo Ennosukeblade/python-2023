@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <title>Author: {{author_with_fav_books.name}}</title>
+</head>
+
+<body>
+    <div class="container p-4 d-flex flex-column" style="height: 100vh">
+        <div class="row">
+            <div class="col-md-6 p-4">
+                <h2>{{author_with_fav_books.name}}'s favorites</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th># of pages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for book in author_with_fav_books.fav_books%}
+                        <tr>
+                            <td>{{book.title}}</td>
+                            <td>{{book.num_of_pages}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6 p-4">
+                <h2>Add Author's Favorites</h2>
+                <form action="/add_books_to_fav" method="post">
+                    <input type="hidden" value={{author_with_fav_books.id}} name="author_id">
+                    <div class="form-group mb-3">
+                        <label for="my-select">Book</label>
+                        <select id="my-select" class="form-control" name="book_id">
+                            {%for b in books%}
+                            <option value={{b.id}}>{{b.title}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <button class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+        <a class="mt-auto" href="/">Home</a>
+    </div>
+</body>
+
+</html>

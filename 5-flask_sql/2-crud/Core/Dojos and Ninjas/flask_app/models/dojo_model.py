@@ -2,6 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DB
 from flask_app.models.ninja_model import Ninja
 
+
 class Dojo:
     def __init__(self, data):
         self.id = data['id']
@@ -16,14 +17,14 @@ class Dojo:
                 INSERT INTO dojos (name) VALUES (%(name)s);
                 """
         return connectToMySQL(DB).query_db(query, data)
-    
+
     @classmethod
     def get_all_dojos(cls):
         query = """
                 SELECT * FROM dojos
                 """
         result = connectToMySQL(DB).query_db(query)
-        
+
         all_dojos = []
         for dojo in result:
             all_dojos.append(cls(dojo))

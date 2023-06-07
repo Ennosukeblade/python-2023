@@ -17,6 +17,7 @@ class User:
         "rewards member:", str(self.is_rewards_member) + "\n" +
         "gold card points:", self.gold_card_points
         )
+        return
 
     def enroll(self):
         if (self.is_rewards_member == True):
