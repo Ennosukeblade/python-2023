@@ -1,0 +1,13 @@
+.container {
+}
+form {
+    margin: 0 auto;
+    max-width: 200px;
+}
+.box {
+    margin: 0 auto;
+    width: 200px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: larger;
+}
