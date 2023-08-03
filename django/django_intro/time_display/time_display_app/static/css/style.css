@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5rem auto;
+    width: fit-content;
+    text-align: center;
+    padding: 2rem;
+    background-color: darkslategray;
+}
+.main div {
+    padding: 1rem;
+    background-color: white;
+}
+h3 {
+    padding-bottom: 1rem;
+    color: whitesmoke;
+    font-weight: 400;
+}
+
+.main,
+.main div {
+    border-radius: 12px;
+}
