@@ -57,6 +57,7 @@ class Author:
                 'updated_at': row['books.updated_at']
             }
             author.fav_books.append(Book(book))
+        print(author)
         return author
     
     @classmethod

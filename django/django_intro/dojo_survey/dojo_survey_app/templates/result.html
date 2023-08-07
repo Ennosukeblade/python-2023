@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="p-5">
+        <div class="m-auto p-3 main border rounded-3 shadow">
+            <h3 class="text-decoration-underline ">Submitted Info</h3>
+            <div class="p-2">
+                {% load custom_filters %}
+                <table class="w-100 table ">
+                    {% for k, v in data.items %}
+                    <tr>
+                        <td>{{k}}:</td>
+                        <td>
+                            {% if v|is_list %}
+                            {% for item in v %}
+                            <li class="list-unstyled ">{{item}}</li>
+                            {% endfor %}
+                            {% else %}
+                            {{v}}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <a href="/" class="btn btn-primary w-100 shadow">Go Back</a>
+        </div>
+    </div>
+</body>
+
+</html>
