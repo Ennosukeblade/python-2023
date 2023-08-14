@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GREAT NUMBER</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <h1>Welcome to the great number game!</h1>
+    <p>I'm thinking of a number between 1 and 100</p>
+    <h3>Take a guess!</h3>
+    <p>{{request.session.rand_num}}</p>
+    {% if 'result' in request.session %}
+    {% if request.session.result.color == 'green' %}
+    <p>{{request.session.attempts.number}} {{request.session.attempts.message}}</p>
+    {% endif %}
+    {% if request.session.attempts.number <= 5 %} <div class="{{request.session.result.color}}">
+        <p>{{request.session.result.state}}</p>
+        {% if request.session.result.color == 'green' %}
+        <a href="/reset" class="button">Play again!</a>
+        {% endif %}
+        </div>
+        {% else %}
+        <h3>You Lose!!😢</h3>
+        <a href="/reset" class="button">Play again!</a>
+        {% endif %}
+        {% endif %}
+        {% if request.session.result.color != 'green' and request.session.attempts.number <= 5 %} <form action="/guess"
+            method="post">
+            {% csrf_token %}
+            <input type="text" name="guess_num">
+            <button>Submit</button>
+            </form>
+            {% endif %}
+</body>
+
+</html>
