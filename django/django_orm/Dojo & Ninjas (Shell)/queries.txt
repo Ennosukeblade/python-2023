@@ -1,0 +1,48 @@
+>>> from dojo_ninjas_app.models import Dojo, Ninja
+>>> Dojo.objects.create(name="Coding Dojo", city="Chicago", state="Illinois")
+<Dojo: Dojo object (1)>
+>>> Dojo.objects.create(name="Renzo Gracie Academy", city="NYC", state="New York State") 
+<Dojo: Dojo object (2)>
+>>> Dojo.objects.create(name="Kodokan Judo Institute", city="Tokyo", state="Japan")      
+<Dojo: Dojo object (3)>
+>>> dojos_to_delete = Dojo.objects.all()
+>>> dojos_to_delete.delete()
+(3, {'dojo_ninjas_app.Dojo': 3})
+>>> Dojo.objects.all()
+<QuerySet []>
+>>> Dojo.objects.create(name="Coding Dojo", city="Chicago", state="Illinois")
+<Dojo: Dojo object (4)>
+>>> Dojo.objects.create(name="Kodokan Judo Institute", city="Tokyo", state="Japan")
+<Dojo: Dojo object (5)>
+>>> Dojo.objects.create(name="Renzo Gracie Academy", city="NYC", state="New York State")
+<Dojo: Dojo object (6)>
+>>> first_dojo = Dojo.objects.first()     
+>>> Ninja.objects.create(first_name= "Yaya", last_name="Dembele", dojo=first_dojo) 
+<Ninja: Ninja object (1)>
+>>> Ninja.objects.create(first_name= "Mouadh", last_name="Jenouiz", dojo=first_dojo) 
+<Ninja: Ninja object (2)>
+>>> Ninja.objects.create(first_name= "Ghaith", last_name="Amaimia", dojo=first_dojo) 
+<Ninja: Ninja object (3)>
+>>> second_dojo = Dojo.objects.all()[1]
+>>> second_dojo.name
+'Kodokan Judo Institute'
+>>> Ninja.objects.create(first_name= "Naruto", last_name="Uzumaki", dojo=second_dojo) 
+<Ninja: Ninja object (4)>
+>>> Ninja.objects.create(first_name= "Obito", last_name="Uchiha", dojo=second_dojo)  
+<Ninja: Ninja object (5)>
+>>> Ninja.objects.create(first_name="Rock", last_name="Lee", dojo=second_dojo)      
+<Ninja: Ninja object (6)>
+>>> third_dojo = Dojo.objects.all()[2]
+>>> Ninja.objects.create(first_name="Shikamaru", last_name="Lee", dojo=third_dojo)  
+<Ninja: Ninja object (7)>
+>>> Ninja.objects.create(first_name="Hinata", last_name="Hyuga", dojo=third_dojo)  
+<Ninja: Ninja object (8)>
+>>> Ninja.objects.create(first_name="Kabuto", last_name="Yakushi", dojo=third_dojo) 
+<Ninja: Ninja object (9)>
+>>> last_dojo = Dojo.objects.last()
+>>> Ninja.objects.filter(dojo=last_dojo).values()
+>>> Dojo.objects.last().__dict__
+{'_state': <django.db.models.base.ModelState object at 0x000002460B053A10>, 'id': 6, 'name': 'Renzo Gracie Academy', 'city': 'NYC', 'state': 'New York State'}
+
+>>> Dojo.objects.create(name="Songshan Shaolin Traditional Wushu Academy", city="Henan", state="China", desc="The Songshan Shaolin Traditional Wushu Academy was founded by Shifu Shi Yan Jun who has 
+been graded 8 Duanwei from the Shaolin Wushu Association.")
